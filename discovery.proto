@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package discovery;
+
+service DiscoveryService {
+    rpc GetServiceHandlers (DiscoverySearchRequest) returns (DiscoverySearchResponse) {}
+}
+
+message DiscoverySearchRequest {
+  string serviceDefinition = 1;
+}
+
+message DiscoverySearchResponse {
+    repeated string services = 1;
+}
