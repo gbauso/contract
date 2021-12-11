@@ -2,14 +2,34 @@ syntax = "proto3";
 
 package discovery;
 
+option go_package = "github.com/gbauso/grpc_microservices/discoveryservice/grpc_gen";
+
 service DiscoveryService {
     rpc GetServiceHandlers (DiscoverySearchRequest) returns (DiscoverySearchResponse) {}
+    rpc RegisterServiceHandlers (RegisterServiceHandlersRequest) returns (RegisterServiceHandlersResponse) {}
+    rpc UnregisterService (UnregisterServiceRequest) returns (UnregisterServiceResponse) {}
 }
 
 message DiscoverySearchRequest {
-  string serviceDefinition = 1;
+    string serviceDefinition = 1;
 }
 
 message DiscoverySearchResponse {
     repeated string services = 1;
+}
+
+message RegisterServiceHandlersRequest {
+    string service = 1;
+    repeated string handlers = 2;
+}
+
+message RegisterServiceHandlersResponse {
+}
+
+message UnregisterServiceRequest {
+
+}
+
+message UnregisterServiceResponse {
+
 }
